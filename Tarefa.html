@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIARI</title>
+    <link rel="stylesheet" href="Tarefa.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" type="image/jpg" href="svg/Icone.svg"/>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="svg/Group 48.svg" alt="">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="menu-item">Diário</a></li>
+                <li><a href="#" class="menu-item">Lista de Tarefas</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="tarefas">
+            <h1>Lista de Tarefas</h1>
+            <input type="text" class="input" id="nova-tarefa" placeholder="Digite uma nova tarefa">
+            <button onclick="adicionarTarefa()">Adicionar</button>
+            <ul id="lista-tarefas"></ul>
+        </section>
+        <div id="personalizacao-tema" class="temas-fixos">
+            <button onclick="mudarTema('claro')">☀️</button>
+            <button onclick="mudarTema('escuro')">🌑</button>
+            <button onclick="mudarTema('colorido')">🌷</button>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Meu Diário e Lista de Tarefas</p>
+    </footer>
+
+    <script>
+        // Carregar tarefas salvas no localStorage
+        function carregarTarefas() {
+            const tarefasSalvas = JSON.parse(localStorage.getItem('tarefas')) || [];
+            const lista = document.getElementById('lista-tarefas');
+            lista.innerHTML = '';
+            tarefasSalvas.forEach((tarefa, index) => {
+                adicionarTarefaNaLista(tarefa.texto, tarefa.concluida, index);
+            });
+        }
+
+        // Adicionar nova tarefa
+        function adicionarTarefa() {
+            const input = document.getElementById('nova-tarefa');
+            const texto = input.value.trim();
+
+            if (texto === '') {
+                alert('Por favor, digite uma tarefa!');
+                return;
+            }
+
+            adicionarTarefaNaLista(texto, false);
+            salvarTarefa(texto, false);
+            input.value = '';
+        }
+
+        // Adicionar tarefa na interface
+        function adicionarTarefaNaLista(texto, concluida, index = null) {
+            const lista = document.getElementById('lista-tarefas');
+
+            const li = document.createElement('li');
+            li.textContent = texto;
+            li.classList.toggle('concluida', concluida);
+
+            const botaoAcao = document.createElement('button');
+            botaoAcao.textContent = concluida ? 'Remover' : 'Concluir';
+            botaoAcao.className = 'btn-acao';
+            botaoAcao.onclick = () => {
+                if (li.classList.contains('concluida')) {
+                    removerTarefa(index || Array.from(lista.children).indexOf(li));
+                    lista.removeChild(li);
+                } else {
+                    li.classList.add('concluida');
+                    atualizarTarefa(index || Array.from(lista.children).indexOf(li), true);
+                    botaoAcao.textContent = 'Remover';
+                }
+            };
+
+            li.appendChild(botaoAcao);
+            lista.appendChild(li);
+        }
+
+        // Salvar tarefa no localStorage
+        function salvarTarefa(texto, concluida) {
+            const tarefas = JSON.parse(localStorage.getItem('tarefas')) || [];
+            tarefas.push({ texto, concluida });
+            localStorage.setItem('tarefas', JSON.stringify(tarefas));
+        }
+
+        // Atualizar tarefa no localStorage
+        function atualizarTarefa(index, concluida) {
+            const tarefas = JSON.parse(localStorage.getItem('tarefas')) || [];
+            if (tarefas[index]) {
+                tarefas[index].concluida = concluida;
+                localStorage.setItem('tarefas', JSON.stringify(tarefas));
+            }
+        }
+
+        // Remover tarefa no localStorage
+        function removerTarefa(index) {
+            const tarefas = JSON.parse(localStorage.getItem('tarefas')) || [];
+            tarefas.splice(index, 1);
+            localStorage.setItem('tarefas', JSON.stringify(tarefas));
+        }
+
+        // Alterar tema
+        function mudarTema(tema) {
+            document.body.className = `tema-${tema}`;
+            localStorage.setItem('temaSelecionado', tema);
+        }
+
+        // Carregar tema ao iniciar
+        window.onload = function () {
+            const temaSalvo = localStorage.getItem('temaSelecionado') || 'claro';
+            mudarTema(temaSalvo);
+            carregarTarefas();
+        };
+    </script>
+</body>
+</html>

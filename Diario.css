@@ -1,0 +1,289 @@
+/* Tema Claro */
+.tema-claro {
+    --cor-fundo: #f4f4f9;
+    --cor-texto: #121212;
+    --cor-botao: rgb(70, 70, 70);
+    --cor-botao-hover: #d0ff00;
+}
+
+/* Tema Escuro */
+.tema-escuro {
+    --cor-fundo: #121212;
+    --cor-texto: #585858;
+    --cor-botao: #333;
+    --cor-botao-hover: #d0ff00;
+}
+
+/* Tema Colorido */
+.tema-colorido {
+    --cor-fundo: #af86b8;
+    --cor-texto: #000000;
+    --cor-botao: #8f5e78;
+    --cor-botao-hover: #ff69b4;
+}
+
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Quicksand', sans-serif;
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    transition: background-color 0.5s, color 0.5s;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: rgba(70, 70, 70, 0.7);
+    color: #fff;
+    padding: 1rem;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    position: relative;
+}
+
+header nav a {
+    color: #fff;
+    text-decoration: none;
+    position: relative;
+}
+
+.header-scrolled nav .logo img {
+    width: 100px;
+}
+
+.header-scrolled {
+    background: rgba(0, 0, 0, 0.789);
+}
+
+.logo img {
+    width: 200px;
+    transition: all 0.3s ease;
+}
+
+.header-scrolled .logo img {
+    width: 100px;
+}
+
+.header-scrolled {
+    background: rgba(0, 0, 0, 0.789);
+}
+
+.menu-item::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0;
+    height: 2px;
+    background-color: #ffffff;
+    transition: 0.3s ease;
+}
+
+.menu-item:hover::after{
+    width: 100%;
+}
+
+main {
+    padding: 2rem;
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    justify-content: center;
+}
+
+section {
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 800px;
+}
+
+section h2 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+}
+
+textarea, input {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+/* From Uiverse.io by nikk7007 */ 
+button {
+    padding: 0.8em 1.8em;
+    border: 2px solid var(--cor-botao);
+    position: relative;
+    overflow: hidden;
+    background-color: transparent;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 16px;
+    transition: .3s;
+    z-index: 1;
+    font-family: 'Quicksand', sans-serif;
+    color: var(--cor-botao);
+   }
+   
+   button::before {
+    content: '';
+    width: 0;
+    height: 300%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    background: var(--cor-botao-hover);
+    transition: .5s ease;
+    display: block;
+    z-index: -1;
+   }
+   
+   button:hover::before {
+    width: 105%;
+   }
+   
+   button:hover {
+    color: #111;
+   }
+   
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+}
+
+ul li button {
+    background-color: #ff4d4d;
+    padding: 0.3rem 0.7rem;
+}
+
+ul li button:hover {
+    background-color: #d93636;
+}
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    color: var(--cor-texto);
+}
+
+/* Ajuste para alinhar os botões de temas na parte inferior */
+.temas-fixos {
+    position: fixed;
+    bottom: 0; /* Fixa na parte inferior da página */
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center; /* Centraliza os botões horizontalmente */
+    gap: 15px; /* Espaçamento entre os botões */
+    padding: 10px; /* Espaçamento interno para não encostar no limite da tela */
+    background-color: var(--cor-fundo); /* Fundo igual ao tema atual */
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil acima */
+    z-index: 1000; /* Garante que esteja acima de outros elementos */
+}
+
+.temas-fixos button {
+    width: 50px; /* Ajuste de tamanho */
+    height: 50px;
+    border-radius: 50%; /* Botões continuam circulares */
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    background-color: var(--cor-botao);
+    color: var(--cor-texto);
+}
+
+.temas-fixos button:hover {
+    background-color: var(--cor-botao-hover);
+    color: #fff; /* Contraste no hover */
+}
+
+
+
+
+/* From Uiverse.io by Yaseen549 */ 
+.input {
+    background-color: #212121;
+    max-width: 100%;
+    height: 40px;
+    padding: 10px;
+    text-align: center;
+    border: 2px solid white;
+    border-radius: 5px;
+    box-shadow: 3px 3px 2px var(--cor-botao);   
+  }
+  
+  .input:focus {
+    color: var(--cor-botao-hover);
+    background-color: #212121;
+    outline-color: var(--cor-botao-hover);
+    box-shadow: -3px -3px 15px var(--cor-botao-hover);
+    transition: .1s;
+    transition-property: box-shadow;
+  }
+
+  @media (max-width: 390px) and (max-height: 844px) {
+    /* Ajuste geral dos botões */
+    button {
+        width: 100%; /* Botões ocupam toda a largura disponível */
+        font-size: 18px; /* Texto mais legível */
+        padding: 1rem;
+    }
+
+    /* Ajuste da posição dos botões de temas */
+    .temas-fixos {
+        position: fixed;
+        bottom: 20px; /* Move para a parte inferior */
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: center; /* Centraliza na tela */
+        gap: 15px; /* Espaçamento entre os botões */
+    }
+
+    .temas-fixos button {
+        width: 50px; /* Tamanho ajustado para visualização no celular */
+        height: 50px;
+        border-radius: 50%; /* Mantém o formato circular */
+    }
+
+    /* Ajustes adicionais para header e footer */
+    header {
+        font-size: 1.4rem;
+        padding: 0.5rem;
+    }
+
+    footer {
+        font-size: 1rem;
+        padding: 0.5rem;
+    }
+}

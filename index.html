@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIARI</title>
+    <link rel="stylesheet" href="Diario.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" type="image/jpg" href="svg/Icone.svg" />
+</head>
+
+<body onload="carregarDiario()">
+    <header>
+        <div class="logo">
+            <img src="svg/Group 48.svg" alt="">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#" class="menu-item">Diário</a></li>
+                <li><a href="Tarefa.html" class="menu-item">Lista de Tarefas</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="diario">
+            <h1>Diário</h1>
+            <textarea class="input" id="diario-text" placeholder="Escreva aqui o que aconteceu hoje..."></textarea>
+            <button onclick="salvarDiario()">Salvar</button>
+            <button onclick="removerUltimaLinha()">Remover</button>
+            <button onclick="limparDiarios()">Limpar</button>
+            <div id="diario-log"></div>
+            <div id="mensagem"></div>
+        </section>
+        <div id="personalizacao-tema" class="temas-fixos">
+            <button onclick="mudarTema('claro')">☀️</button>
+            <button onclick="mudarTema('escuro')">🌑</button>
+            <button onclick="mudarTema('colorido')">🌷</button>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Meu Diário e Lista de Tarefas</p>
+    </footer>
+
+    <script>
+        function limparDiarios() {
+            if (confirm('Tem certeza que deseja apagar todos os registros?')) {
+                localStorage.removeItem('diarios');
+                document.getElementById('diario-log').innerHTML = '';
+                alert('Diários apagados!');
+            }
+        };
+
+
+        function salvarDiario() {
+            const texto = document.getElementById('diario-text').value;
+            const log = document.getElementById('diario-log');
+            const novoRegistro = document.createElement('p');
+            novoRegistro.textContent = texto;
+
+            // Adiciona o novo texto ao log
+            log.appendChild(novoRegistro);
+
+            // Salva no LocalStorage
+            let diarios = JSON.parse(localStorage.getItem('diarios')) || [];
+            diarios.push(texto);
+            localStorage.setItem('diarios', JSON.stringify(diarios));
+
+            // Limpa o campo de texto
+            document.getElementById('diario-text').value = '';
+            alert('Texto salvo!');
+        }
+
+        function removerUltimaLinha() {
+            const log = document.getElementById("diario-log");
+            if (log.lastChild) {
+                log.removeChild(log.lastChild);
+                exibirMensagem("Última linha removida!", 3000);
+            } else {
+                exibirMensagem("Nenhuma linha para remover!", 3000);
+            }
+        };
+
+        window.onscroll = function () {
+            const header = document.getElementById('header');
+            if (window.scrollY > 5) {
+                header.classList.add('header-scrolled');
+            } else {
+                header.classList.remove('header-scrolled');
+            }
+        };
+
+        function mudarTema(tema) {
+            // Remove as classes de tema atuais
+            document.body.classList.remove('tema-claro', 'tema-escuro', 'tema-colorido');
+
+            // Adiciona a nova classe de tema
+            document.body.classList.add(`tema-${tema}`);
+
+            // Salva o tema no LocalStorage para manter a escolha do usuário
+            localStorage.setItem('temaSelecionado', tema);
+        }
+
+        // Recupera o tema salvo ao carregar a página
+        window.onload = function () {
+            const temaSalvo = localStorage.getItem('temaSelecionado') || 'claro'; // Padrão: Claro
+            mudarTema(temaSalvo);
+        };
+
+        function carregarDiarios() {
+            const log = document.getElementById('diario-log');
+            const diarios = JSON.parse(localStorage.getItem('diarios')) || [];
+
+            // Exibe cada texto salvo
+            diarios.forEach((texto) => {
+                const novoRegistro = document.createElement('p');
+                novoRegistro.textContent = texto;
+                log.appendChild(novoRegistro);
+            });
+        }
+
+        // Carrega os dados ao iniciar
+        document.addEventListener('DOMContentLoaded', carregarDiarios);
+
+
+    </script>
+</body>
+
+</html>
