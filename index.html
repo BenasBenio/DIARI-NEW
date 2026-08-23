@@ -4,130 +4,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DIARI</title>
-    <link rel="stylesheet" href="Diario.css">
+    <title>DIARI · Diário</title>
+    <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" type="image/jpg" href="svg/Icone.svg" />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Nunito:wght@400;600;700;800&family=Oswald:wght@400;500;700&family=Outfit:wght@300;400;500;600;700&family=Righteous&family=Russo+One&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" type="image/svg+xml" href="svg/Icone.svg">
 </head>
 
-<body onload="carregarDiario()">
-    <header>
-        <div class="logo">
-            <img src="svg/Group 48.svg" alt="">
+<body class="tema-hsm">
+    <a class="skip" href="#conteudo">Ir para o conteúdo</a>
+    <header id="header">
+        <div class="header-inner">
+            <a href="index.html" class="logo" aria-label="DIARI, início">
+                <img src="svg/Group 48.svg" alt="DIARI">
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="menu-item ativo" aria-current="page">Diário</a></li>
+                    <li><a href="Tarefa.html" class="menu-item">Tarefas</a></li>
+                </ul>
+            </nav>
+            <span class="tema-chip" aria-hidden="true"></span>
         </div>
-        <nav>
-            <ul>
-                <li><a href="#" class="menu-item">Diário</a></li>
-                <li><a href="Tarefa.html" class="menu-item">Lista de Tarefas</a></li>
-            </ul>
-        </nav>
     </header>
 
-    <main>
-        <section id="diario">
+    <main id="conteudo">
+        <section class="hero">
             <h1>Diário</h1>
-            <textarea class="input" id="diario-text" placeholder="Escreva aqui o que aconteceu hoje..."></textarea>
-            <button onclick="salvarDiario()">Salvar</button>
-            <button onclick="removerUltimaLinha()">Remover</button>
-            <button onclick="limparDiarios()">Limpar</button>
-            <div id="diario-log"></div>
-            <div id="mensagem"></div>
+            <p class="tagline"></p>
         </section>
-        <div id="personalizacao-tema" class="temas-fixos">
-            <button onclick="mudarTema('claro')">☀️</button>
-            <button onclick="mudarTema('escuro')">🌑</button>
-            <button onclick="mudarTema('colorido')">🌷</button>
+
+        <section class="painel" id="diario">
+            <h2>Nova página</h2>
+            <p class="meta-linha" style="margin-bottom: 0.65rem;">Como foi o dia?</p>
+            <div class="humores" id="humores" role="group" aria-label="Humor do dia"></div>
+            <label for="diario-text">O que aconteceu hoje</label>
+            <textarea id="diario-text" placeholder="Escreva aqui o que aconteceu hoje..."></textarea>
+            <div class="meta-linha">
+                <span>Ctrl + Enter para salvar</span>
+                <span id="contador-chars">0 caracteres</span>
+            </div>
+            <div class="acoes">
+                <button type="button" class="btn" id="btn-salvar" onclick="salvarDiario()">Salvar</button>
+                <button type="button" class="btn btn-ghost" onclick="exportarDiario()">Exportar</button>
+                <button type="button" class="btn btn-danger" onclick="limparDiarios()">Limpar tudo</button>
+            </div>
+        </section>
+
+        <div class="toolbar">
+            <input type="search" id="busca-diario" placeholder="Buscar nas páginas..." aria-label="Buscar no diário">
+            <span class="contador" id="total-entradas">0 páginas</span>
         </div>
+        <div id="diario-log"></div>
     </main>
 
+    <div id="personalizacao-tema" class="temas-fixos" role="group" aria-label="Escolher tema">
+        <button type="button" class="tema-btn" data-tema="camprock" aria-pressed="false" onclick="mudarTema('camprock')">
+            <span aria-hidden="true">🎸</span>
+            Camp Rock 3
+        </button>
+        <button type="button" class="tema-btn" data-tema="hsm" aria-pressed="false" onclick="mudarTema('hsm')">
+            <span aria-hidden="true">☀️</span>
+            HSM 2
+        </button>
+        <button type="button" class="tema-btn" data-tema="descendentes" aria-pressed="false" onclick="mudarTema('descendentes')">
+            <span aria-hidden="true">♥️</span>
+            Descendentes 4
+        </button>
+        <button type="button" class="tema-btn" data-tema="zombies" aria-pressed="false" onclick="mudarTema('zombies')">
+            <span aria-hidden="true">🧛</span>
+            Zombies 4
+        </button>
+    </div>
+
+    <div id="dialogo" class="dialogo" hidden>
+        <div class="dialogo-caixa" role="dialog" aria-modal="true" aria-labelledby="dialogo-titulo">
+            <h2 id="dialogo-titulo">Confirmar</h2>
+            <p id="dialogo-texto"></p>
+            <div class="dialogo-acoes">
+                <button type="button" class="btn btn-ghost" id="dialogo-cancelar">Cancelar</button>
+                <button type="button" class="btn" id="dialogo-confirmar">Confirmar</button>
+            </div>
+        </div>
+    </div>
+
     <footer>
-        <p>&copy; 2024 Meu Diário e Lista de Tarefas</p>
+        <p>&copy; 2026 DIARI · Diário e lista de tarefas</p>
     </footer>
 
-    <script>
-        function limparDiarios() {
-            if (confirm('Tem certeza que deseja apagar todos os registros?')) {
-                localStorage.removeItem('diarios');
-                document.getElementById('diario-log').innerHTML = '';
-                alert('Diários apagados!');
-            }
-        };
-
-
-        function salvarDiario() {
-            const texto = document.getElementById('diario-text').value;
-            const log = document.getElementById('diario-log');
-            const novoRegistro = document.createElement('p');
-            novoRegistro.textContent = texto;
-
-            // Adiciona o novo texto ao log
-            log.appendChild(novoRegistro);
-
-            // Salva no LocalStorage
-            let diarios = JSON.parse(localStorage.getItem('diarios')) || [];
-            diarios.push(texto);
-            localStorage.setItem('diarios', JSON.stringify(diarios));
-
-            // Limpa o campo de texto
-            document.getElementById('diario-text').value = '';
-            alert('Texto salvo!');
-        }
-
-        function removerUltimaLinha() {
-            const log = document.getElementById("diario-log");
-            if (log.lastChild) {
-                log.removeChild(log.lastChild);
-                exibirMensagem("Última linha removida!", 3000);
-            } else {
-                exibirMensagem("Nenhuma linha para remover!", 3000);
-            }
-        };
-
-        window.onscroll = function () {
-            const header = document.getElementById('header');
-            if (window.scrollY > 5) {
-                header.classList.add('header-scrolled');
-            } else {
-                header.classList.remove('header-scrolled');
-            }
-        };
-
-        function mudarTema(tema) {
-            // Remove as classes de tema atuais
-            document.body.classList.remove('tema-claro', 'tema-escuro', 'tema-colorido');
-
-            // Adiciona a nova classe de tema
-            document.body.classList.add(`tema-${tema}`);
-
-            // Salva o tema no LocalStorage para manter a escolha do usuário
-            localStorage.setItem('temaSelecionado', tema);
-        }
-
-        // Recupera o tema salvo ao carregar a página
-        window.onload = function () {
-            const temaSalvo = localStorage.getItem('temaSelecionado') || 'claro'; // Padrão: Claro
-            mudarTema(temaSalvo);
-        };
-
-        function carregarDiarios() {
-            const log = document.getElementById('diario-log');
-            const diarios = JSON.parse(localStorage.getItem('diarios')) || [];
-
-            // Exibe cada texto salvo
-            diarios.forEach((texto) => {
-                const novoRegistro = document.createElement('p');
-                novoRegistro.textContent = texto;
-                log.appendChild(novoRegistro);
-            });
-        }
-
-        // Carrega os dados ao iniciar
-        document.addEventListener('DOMContentLoaded', carregarDiarios);
-
-
-    </script>
+    <script src="app.js"></script>
+    <script src="diario.js"></script>
 </body>
 
 </html>

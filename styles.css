@@ -1,0 +1,810 @@
+:root {
+    --radius: 18px;
+    --header-h: 92px;
+    --transicao: 0.35s ease;
+}
+
+/* ========== Camp Rock 3 — palco noturno, fogueira e jam final ========== */
+.tema-camprock {
+    --cor-fundo: #140c08;
+    --cor-fundo-2: #2a160c;
+    --cor-surface: #2c1a10;
+    --cor-surface-2: #3d2416;
+    --cor-texto: #f8e6c8;
+    --cor-muted: #c9a27a;
+    --cor-primaria: #f77f00;
+    --cor-secundaria: #ffd166;
+    --cor-accent: #d62828;
+    --cor-header: rgba(20, 10, 6, 0.88);
+    --cor-borda: rgba(247, 127, 0, 0.35);
+    --cor-input: #1c100a;
+    --cor-sombra: 0 18px 50px rgba(0, 0, 0, 0.45);
+    --cor-glow: 0 0 28px rgba(247, 127, 0, 0.35);
+    --font-display: "Oswald", sans-serif;
+    --font-body: "Outfit", sans-serif;
+    --radius: 10px;
+    --padrao:
+        radial-gradient(ellipse 80% 50% at 50% 115%, rgba(247, 127, 0, 0.28), transparent 55%),
+        radial-gradient(circle at 12% 0%, rgba(214, 40, 40, 0.18), transparent 32%),
+        linear-gradient(180deg, #1a0e08 0%, #241208 42%, #140c08 100%);
+}
+
+.tema-camprock .tema-chip::after { content: "CAMP ROCK 3"; }
+.tema-camprock .tagline::after { content: "Este sou eu."; }
+
+/* ========== High School Musical 2 — Lava Springs, verão e Wildcats ========== */
+.tema-hsm {
+    --cor-fundo: #e8f6fb;
+    --cor-fundo-2: #ffe8c2;
+    --cor-surface: #fffdf8;
+    --cor-surface-2: #fff4e4;
+    --cor-texto: #1b1b3a;
+    --cor-muted: #5c5c7a;
+    --cor-primaria: #c8102e;
+    --cor-secundaria: #00a8c5;
+    --cor-accent: #f7b801;
+    --cor-header: rgba(200, 16, 46, 0.94);
+    --cor-borda: rgba(200, 16, 46, 0.2);
+    --cor-input: #ffffff;
+    --cor-sombra: 0 16px 40px rgba(200, 16, 46, 0.12);
+    --cor-glow: 0 0 24px rgba(0, 168, 197, 0.25);
+    --font-display: "Righteous", sans-serif;
+    --font-body: "Nunito", sans-serif;
+    --radius: 22px;
+    --padrao:
+        linear-gradient(180deg, #7ec8e3 0%, #c8ebf5 28%, #ffe7c4 62%, #fff6e8 100%);
+}
+
+.tema-hsm .tema-chip::after { content: "HSM 2"; }
+.tema-hsm .tagline::after { content: "Que horas são? Hora do verão!"; }
+
+/* ========== Descendentes 4 — Rise of Red, Wonderland, Red vs Chloe ========== */
+.tema-descendentes {
+    --cor-fundo: #10060a;
+    --cor-fundo-2: #1a0a14;
+    --cor-surface: #1c0c14;
+    --cor-surface-2: #2a101c;
+    --cor-texto: #f6ecec;
+    --cor-muted: #c9b0b4;
+    --cor-primaria: #c41e3a;
+    --cor-secundaria: #2f6fed;
+    --cor-accent: #e8c547;
+    --cor-header: rgba(12, 4, 8, 0.9);
+    --cor-borda: rgba(232, 197, 71, 0.35);
+    --cor-input: #14080c;
+    --cor-sombra: 0 18px 50px rgba(196, 30, 58, 0.22);
+    --cor-glow: 0 0 28px rgba(232, 197, 71, 0.28);
+    --font-display: "Cinzel", serif;
+    --font-body: "Outfit", sans-serif;
+    --radius: 6px 22px 6px 22px;
+    --padrao:
+        radial-gradient(circle at 18% 20%, rgba(196, 30, 58, 0.28), transparent 34%),
+        radial-gradient(circle at 86% 78%, rgba(47, 111, 237, 0.22), transparent 36%),
+        linear-gradient(160deg, #12060a 0%, #180814 50%, #0c0814 100%);
+}
+
+.tema-descendentes .tema-chip::after { content: "DESCENDENTES 4"; }
+.tema-descendentes .tagline::after { content: "O coração manda."; }
+
+/* ========== Zombies 4 — Dawn of the Vampires ========== */
+.tema-zombies {
+    --cor-fundo: #07070c;
+    --cor-fundo-2: #101018;
+    --cor-surface: #12121a;
+    --cor-surface-2: #1a1a26;
+    --cor-texto: #eaffea;
+    --cor-muted: #9bb89b;
+    --cor-primaria: #4dff6a;
+    --cor-secundaria: #b91c3a;
+    --cor-accent: #ff6bb5;
+    --cor-header: rgba(6, 6, 10, 0.92);
+    --cor-borda: rgba(77, 255, 106, 0.35);
+    --cor-input: #0c0c12;
+    --cor-sombra: 0 0 40px rgba(77, 255, 106, 0.12);
+    --cor-glow: 0 0 22px rgba(77, 255, 106, 0.45);
+    --font-display: "Russo One", sans-serif;
+    --font-body: "Outfit", sans-serif;
+    --radius: 16px;
+    --padrao:
+        radial-gradient(circle at 15% 85%, rgba(77, 255, 106, 0.16), transparent 32%),
+        radial-gradient(circle at 88% 12%, rgba(185, 28, 58, 0.28), transparent 34%),
+        linear-gradient(180deg, #07070c 0%, #0c0c14 100%);
+}
+
+.tema-zombies .tema-chip::after { content: "ZOMBIES 4"; }
+.tema-zombies .tagline::after { content: "Algo pelo que viver."; }
+
+/* ========== Base ========== */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    background: var(--padrao);
+    background-attachment: fixed;
+    color: var(--cor-texto);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    transition: background 0.5s ease, color 0.5s ease;
+    position: relative;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.35;
+}
+
+.tema-camprock::before {
+    background:
+        repeating-linear-gradient(115deg, transparent 0 18px, rgba(255, 209, 102, 0.03) 18px 19px);
+}
+
+.tema-hsm::before {
+    background:
+        repeating-linear-gradient(-18deg, transparent 0 28px, rgba(200, 16, 46, 0.05) 28px 32px);
+}
+
+.tema-descendentes::before {
+    background-image:
+        radial-gradient(circle, rgba(232, 197, 71, 0.45) 1.2px, transparent 1.4px);
+    background-size: 42px 42px;
+    opacity: 0.28;
+}
+
+.tema-zombies::before {
+    background-image:
+        linear-gradient(rgba(77, 255, 106, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(77, 255, 106, 0.05) 1px, transparent 1px);
+    background-size: 48px 48px;
+}
+
+.skip {
+    position: absolute;
+    left: -999px;
+    top: 0;
+    background: var(--cor-primaria);
+    color: var(--cor-fundo);
+    padding: 0.6rem 1rem;
+    z-index: 2000;
+}
+
+.skip:focus {
+    left: 1rem;
+    top: 1rem;
+}
+
+/* ========== Header ========== */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--cor-header);
+    backdrop-filter: blur(16px);
+    color: #fff;
+    border-bottom: 1px solid var(--cor-borda);
+    transition: box-shadow var(--transicao), padding var(--transicao);
+}
+
+header.header-scrolled {
+    box-shadow: var(--cor-sombra);
+}
+
+.header-inner {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 0.85rem 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.logo {
+    display: inline-flex;
+    align-items: center;
+    background: #fff;
+    border-radius: 12px;
+    padding: 0.28rem 0.7rem 0.18rem;
+    line-height: 0;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+}
+
+.logo img {
+    width: 148px;
+    height: auto;
+    transition: width var(--transicao);
+}
+
+header.header-scrolled .logo img {
+    width: 108px;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 0.35rem;
+}
+
+header nav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    padding: 0.45rem 0.85rem;
+    border-radius: 999px;
+    position: relative;
+}
+
+header nav a:hover,
+header nav a.ativo {
+    background: rgba(255, 255, 255, 0.16);
+}
+
+.tema-chip {
+    font-family: var(--font-display);
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    padding: 0.35rem 0.7rem;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 999px;
+    white-space: nowrap;
+}
+
+.tema-hsm .tema-chip,
+.tema-hsm header nav a {
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* ========== Layout ========== */
+main {
+    flex: 1;
+    width: 100%;
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 2rem 1.25rem 8.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.hero {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 3.1rem);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    line-height: 1.15;
+}
+
+.tagline {
+    color: var(--cor-muted);
+    margin-top: 0.35rem;
+    font-size: 1.05rem;
+}
+
+.tagline::after {
+    font-style: italic;
+}
+
+.painel {
+    background: var(--cor-surface);
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--radius);
+    box-shadow: var(--cor-sombra);
+    padding: 1.35rem 1.4rem 1.5rem;
+}
+
+.painel h2 {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    margin-bottom: 0.85rem;
+    letter-spacing: 0.04em;
+}
+
+.acoes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: 0.75rem;
+}
+
+.toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    align-items: center;
+    margin: 1.25rem 0 0.85rem;
+}
+
+.toolbar input[type="search"] {
+    flex: 1;
+    min-width: 200px;
+}
+
+.contador {
+    margin-left: auto;
+    color: var(--cor-muted);
+    font-size: 0.92rem;
+}
+
+/* ========== Forms ========== */
+label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-bottom: 0.35rem;
+    color: var(--cor-muted);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+textarea,
+input[type="text"],
+input[type="search"] {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    border: 1.5px solid var(--cor-borda);
+    border-radius: calc(var(--radius) - 4px);
+    background: var(--cor-input);
+    color: var(--cor-texto);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    transition: border-color var(--transicao), box-shadow var(--transicao);
+}
+
+textarea {
+    min-height: 180px;
+    resize: vertical;
+    line-height: 1.55;
+}
+
+textarea:focus,
+input[type="text"]:focus,
+input[type="search"]:focus {
+    outline: none;
+    border-color: var(--cor-primaria);
+    box-shadow: var(--cor-glow);
+}
+
+.meta-linha {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    color: var(--cor-muted);
+    font-size: 0.85rem;
+    margin-top: 0.4rem;
+}
+
+.humores {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 0.85rem;
+}
+
+.humor-btn {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 1.5px solid var(--cor-borda);
+    background: var(--cor-surface-2);
+    cursor: pointer;
+    font-size: 1.15rem;
+    display: grid;
+    place-items: center;
+    transition: transform 0.2s ease, border-color var(--transicao), box-shadow var(--transicao);
+}
+
+.humor-btn:hover {
+    transform: scale(1.08);
+}
+
+.humor-btn.ativo {
+    border-color: var(--cor-primaria);
+    box-shadow: var(--cor-glow);
+}
+
+/* ========== Buttons ========== */
+.btn {
+    appearance: none;
+    border: 2px solid var(--cor-primaria);
+    background: var(--cor-primaria);
+    color: #140c08;
+    font-family: var(--font-body);
+    font-weight: 800;
+    font-size: 0.92rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 0.72rem 1.15rem;
+    border-radius: calc(var(--radius) - 2px);
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow var(--transicao), filter var(--transicao);
+}
+
+.tema-hsm .btn { color: #fff; }
+.tema-hsm .btn-ghost,
+.tema-hsm .btn-danger { color: var(--cor-texto); }
+.tema-hsm .btn-danger { border-color: var(--cor-primaria); }
+.tema-descendentes .btn { color: #1a0a0c; background: var(--cor-accent); border-color: var(--cor-accent); }
+.tema-zombies .btn { color: #07070c; }
+
+.btn:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.08);
+    box-shadow: var(--cor-glow);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.btn-ghost {
+    background: transparent;
+    color: var(--cor-texto);
+    border-color: var(--cor-borda);
+}
+
+.tema-hsm .btn-ghost { color: var(--cor-texto); }
+
+.btn-danger {
+    background: transparent;
+    border-color: var(--cor-accent);
+    color: var(--cor-texto);
+}
+
+.tema-camprock .btn-danger,
+.tema-descendentes .btn-danger,
+.tema-zombies .btn-danger {
+    border-color: #ff6b6b;
+    color: #ffb4b4;
+}
+
+.btn-sm {
+    padding: 0.38rem 0.7rem;
+    font-size: 0.75rem;
+}
+
+.filtros {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+}
+
+.chip {
+    border: 1px solid var(--cor-borda);
+    background: var(--cor-surface-2);
+    color: var(--cor-texto);
+    border-radius: 999px;
+    padding: 0.35rem 0.8rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: var(--font-body);
+}
+
+.chip.ativo {
+    background: var(--cor-primaria);
+    border-color: var(--cor-primaria);
+    color: #140c08;
+}
+
+.tema-hsm .chip.ativo { color: #fff; }
+.tema-descendentes .chip.ativo { background: var(--cor-accent); border-color: var(--cor-accent); color: #1a0a0c; }
+
+/* ========== Diary entries ========== */
+#diario-log {
+    display: grid;
+    gap: 0.85rem;
+}
+
+.entrada {
+    background: var(--cor-surface-2);
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--radius);
+    padding: 1rem 1.1rem;
+    animation: entrar 0.35s ease;
+}
+
+.entrada-topo {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.75rem;
+    align-items: center;
+    margin-bottom: 0.45rem;
+    color: var(--cor-muted);
+    font-size: 0.85rem;
+}
+
+.entrada-humor {
+    font-size: 1.15rem;
+}
+
+.entrada-texto {
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.entrada-acoes {
+    display: flex;
+    gap: 0.45rem;
+    margin-top: 0.75rem;
+}
+
+.vazio {
+    text-align: center;
+    padding: 2rem 1rem;
+    color: var(--cor-muted);
+    border: 1px dashed var(--cor-borda);
+    border-radius: var(--radius);
+}
+
+/* ========== Tasks ========== */
+#lista-tarefas {
+    list-style: none;
+    display: grid;
+    gap: 0.55rem;
+    margin-top: 1rem;
+}
+
+#lista-tarefas li {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 0.9rem;
+    background: var(--cor-surface-2);
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--radius);
+}
+
+#lista-tarefas li.concluida .tarefa-texto {
+    text-decoration: line-through;
+    opacity: 0.55;
+}
+
+#lista-tarefas li.vazio {
+    display: block;
+    background: transparent;
+    border-style: dashed;
+}
+
+.tarefa-texto {
+    word-break: break-word;
+}
+
+.progresso {
+    height: 8px;
+    background: var(--cor-input);
+    border-radius: 999px;
+    overflow: hidden;
+    margin-top: 0.55rem;
+}
+
+.progresso span {
+    display: block;
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--cor-primaria), var(--cor-secundaria));
+    transition: width 0.4s ease;
+}
+
+.campo-add {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0.6rem;
+}
+
+input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    accent-color: var(--cor-primaria);
+    cursor: pointer;
+}
+
+/* ========== Theme dock ========== */
+.temas-fixos {
+    position: fixed;
+    z-index: 1000;
+    left: 50%;
+    bottom: 1.1rem;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.45rem;
+    padding: 0.45rem;
+    background: color-mix(in srgb, var(--cor-surface) 88%, transparent);
+    backdrop-filter: blur(16px);
+    border: 1px solid var(--cor-borda);
+    border-radius: 999px;
+    box-shadow: var(--cor-sombra);
+}
+
+.tema-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.1rem;
+    min-width: 76px;
+    height: 58px;
+    border: 2px solid transparent;
+    border-radius: 999px;
+    cursor: pointer;
+    color: #fff;
+    font-family: var(--font-body);
+    font-size: 0.62rem;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    padding: 0.2rem 0.55rem;
+    text-transform: uppercase;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.tema-btn span {
+    font-size: 1.05rem;
+    line-height: 1;
+}
+
+.tema-btn[data-tema="camprock"] {
+    background: linear-gradient(135deg, #f77f00, #d62828);
+}
+
+.tema-btn[data-tema="hsm"] {
+    background: linear-gradient(135deg, #c8102e, #00a8c5);
+}
+
+.tema-btn[data-tema="descendentes"] {
+    background: linear-gradient(135deg, #c41e3a 0%, #1a0a14 50%, #2f6fed 100%);
+}
+
+.tema-btn[data-tema="zombies"] {
+    background: linear-gradient(135deg, #4dff6a, #1a1a26 48%, #b91c3a);
+}
+
+.tema-btn:hover {
+    transform: translateY(-2px) scale(1.04);
+}
+
+.tema-btn.ativo {
+    border-color: #fff;
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--cor-primaria) 70%, white);
+}
+
+/* ========== Toast & dialog ========== */
+#toasts {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1300;
+    display: grid;
+    gap: 0.5rem;
+}
+
+.toast {
+    background: var(--cor-surface);
+    color: var(--cor-texto);
+    border: 1px solid var(--cor-borda);
+    border-left: 4px solid var(--cor-primaria);
+    border-radius: 12px;
+    padding: 0.8rem 1rem;
+    box-shadow: var(--cor-sombra);
+    min-width: 220px;
+    animation: entrar 0.3s ease;
+}
+
+.dialogo {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    display: grid;
+    place-items: center;
+    z-index: 1400;
+    padding: 1rem;
+}
+
+.dialogo[hidden] {
+    display: none;
+}
+
+.dialogo-caixa {
+    background: var(--cor-surface);
+    color: var(--cor-texto);
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--radius);
+    padding: 1.3rem;
+    width: min(420px, 100%);
+    box-shadow: var(--cor-sombra);
+}
+
+.dialogo-caixa h2 {
+    font-family: var(--font-display);
+    margin-bottom: 0.5rem;
+}
+
+.dialogo-acoes {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+footer {
+    text-align: center;
+    padding: 1rem 1rem 6.5rem;
+    color: var(--cor-muted);
+    position: relative;
+    z-index: 1;
+    font-size: 0.9rem;
+}
+
+@keyframes entrar {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+@media (max-width: 720px) {
+    .header-inner {
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .tema-chip {
+        display: none;
+    }
+
+    .campo-add {
+        grid-template-columns: 1fr;
+    }
+
+    .contador {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .temas-fixos {
+        width: calc(100% - 1.2rem);
+        justify-content: space-between;
+        border-radius: 22px;
+    }
+
+    .tema-btn {
+        flex: 1;
+        min-width: 0;
+        height: 54px;
+        font-size: 0.52rem;
+        padding: 0.15rem 0.2rem;
+    }
+
+    main {
+        padding: 1.25rem 0.9rem 8.5rem;
+    }
+
+    .painel {
+        padding: 1.05rem;
+    }
+}

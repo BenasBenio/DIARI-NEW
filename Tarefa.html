@@ -1,133 +1,105 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DIARI</title>
-    <link rel="stylesheet" href="Tarefa.css">
+    <title>DIARI · Tarefas</title>
+    <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" type="image/jpg" href="svg/Icone.svg"/>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Nunito:wght@400;600;700;800&family=Oswald:wght@400;500;700&family=Outfit:wght@300;400;500;600;700&family=Righteous&family=Russo+One&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" type="image/svg+xml" href="svg/Icone.svg">
 </head>
-<body>
-    <header>
-        <div class="logo">
-            <img src="svg/Group 48.svg" alt="">
+
+<body class="tema-hsm">
+    <a class="skip" href="#conteudo">Ir para o conteúdo</a>
+    <header id="header">
+        <div class="header-inner">
+            <a href="index.html" class="logo" aria-label="DIARI, início">
+                <img src="svg/Group 48.svg" alt="DIARI">
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="menu-item">Diário</a></li>
+                    <li><a href="Tarefa.html" class="menu-item ativo" aria-current="page">Tarefas</a></li>
+                </ul>
+            </nav>
+            <span class="tema-chip" aria-hidden="true"></span>
         </div>
-        <nav>
-            <ul>
-                <li><a href="index.html" class="menu-item">Diário</a></li>
-                <li><a href="#" class="menu-item">Lista de Tarefas</a></li>
-            </ul>
-        </nav>
     </header>
 
-    <main>
-        <section id="tarefas">
-            <h1>Lista de Tarefas</h1>
-            <input type="text" class="input" id="nova-tarefa" placeholder="Digite uma nova tarefa">
-            <button onclick="adicionarTarefa()">Adicionar</button>
+    <main id="conteudo">
+        <section class="hero">
+            <h1>Lista de tarefas</h1>
+            <p class="tagline"></p>
+        </section>
+
+        <section class="painel" id="tarefas">
+            <h2>Nova tarefa</h2>
+            <div class="campo-add">
+                <input type="text" id="nova-tarefa" placeholder="Digite uma nova tarefa" autocomplete="off">
+                <button type="button" class="btn" onclick="adicionarTarefa()">Adicionar</button>
+            </div>
+            <div class="progresso" aria-hidden="true">
+                <span id="progresso-barra"></span>
+            </div>
+            <p class="meta-linha" id="progresso-texto">Nenhuma tarefa ainda</p>
+
+            <div class="toolbar">
+                <div class="filtros" role="group" aria-label="Filtrar tarefas">
+                    <button type="button" class="chip ativo" data-filtro="todas" aria-pressed="true">Todas</button>
+                    <button type="button" class="chip" data-filtro="pendentes" aria-pressed="false">Pendentes</button>
+                    <button type="button" class="chip" data-filtro="concluidas" aria-pressed="false">Concluídas</button>
+                </div>
+                <span class="contador"></span>
+            </div>
+
+            <div class="acoes">
+                <button type="button" class="btn btn-ghost" onclick="exportarTarefas()">Exportar</button>
+                <button type="button" class="btn btn-danger" onclick="limparConcluidas()">Limpar concluídas</button>
+            </div>
+
             <ul id="lista-tarefas"></ul>
         </section>
-        <div id="personalizacao-tema" class="temas-fixos">
-            <button onclick="mudarTema('claro')">☀️</button>
-            <button onclick="mudarTema('escuro')">🌑</button>
-            <button onclick="mudarTema('colorido')">🌷</button>
-        </div>
     </main>
 
+    <div id="personalizacao-tema" class="temas-fixos" role="group" aria-label="Escolher tema">
+        <button type="button" class="tema-btn" data-tema="camprock" aria-pressed="false" onclick="mudarTema('camprock')">
+            <span aria-hidden="true">🎸</span>
+            Camp Rock 3
+        </button>
+        <button type="button" class="tema-btn" data-tema="hsm" aria-pressed="false" onclick="mudarTema('hsm')">
+            <span aria-hidden="true">☀️</span>
+            HSM 2
+        </button>
+        <button type="button" class="tema-btn" data-tema="descendentes" aria-pressed="false" onclick="mudarTema('descendentes')">
+            <span aria-hidden="true">♥️</span>
+            Descendentes 4
+        </button>
+        <button type="button" class="tema-btn" data-tema="zombies" aria-pressed="false" onclick="mudarTema('zombies')">
+            <span aria-hidden="true">🧛</span>
+            Zombies 4
+        </button>
+    </div>
+
+    <div id="dialogo" class="dialogo" hidden>
+        <div class="dialogo-caixa" role="dialog" aria-modal="true" aria-labelledby="dialogo-titulo">
+            <h2 id="dialogo-titulo">Confirmar</h2>
+            <p id="dialogo-texto"></p>
+            <div class="dialogo-acoes">
+                <button type="button" class="btn btn-ghost" id="dialogo-cancelar">Cancelar</button>
+                <button type="button" class="btn" id="dialogo-confirmar">Confirmar</button>
+            </div>
+        </div>
+    </div>
+
     <footer>
-        <p>&copy; 2024 Meu Diário e Lista de Tarefas</p>
+        <p>&copy; 2026 DIARI · Diário e lista de tarefas</p>
     </footer>
 
-    <script>
-        // Carregar tarefas salvas no localStorage
-        function carregarTarefas() {
-            const tarefasSalvas = JSON.parse(localStorage.getItem('tarefas')) || [];
-            const lista = document.getElementById('lista-tarefas');
-            lista.innerHTML = '';
-            tarefasSalvas.forEach((tarefa, index) => {
-                adicionarTarefaNaLista(tarefa.texto, tarefa.concluida, index);
-            });
-        }
-
-        // Adicionar nova tarefa
-        function adicionarTarefa() {
-            const input = document.getElementById('nova-tarefa');
-            const texto = input.value.trim();
-
-            if (texto === '') {
-                alert('Por favor, digite uma tarefa!');
-                return;
-            }
-
-            adicionarTarefaNaLista(texto, false);
-            salvarTarefa(texto, false);
-            input.value = '';
-        }
-
-        // Adicionar tarefa na interface
-        function adicionarTarefaNaLista(texto, concluida, index = null) {
-            const lista = document.getElementById('lista-tarefas');
-
-            const li = document.createElement('li');
-            li.textContent = texto;
-            li.classList.toggle('concluida', concluida);
-
-            const botaoAcao = document.createElement('button');
-            botaoAcao.textContent = concluida ? 'Remover' : 'Concluir';
-            botaoAcao.className = 'btn-acao';
-            botaoAcao.onclick = () => {
-                if (li.classList.contains('concluida')) {
-                    removerTarefa(index || Array.from(lista.children).indexOf(li));
-                    lista.removeChild(li);
-                } else {
-                    li.classList.add('concluida');
-                    atualizarTarefa(index || Array.from(lista.children).indexOf(li), true);
-                    botaoAcao.textContent = 'Remover';
-                }
-            };
-
-            li.appendChild(botaoAcao);
-            lista.appendChild(li);
-        }
-
-        // Salvar tarefa no localStorage
-        function salvarTarefa(texto, concluida) {
-            const tarefas = JSON.parse(localStorage.getItem('tarefas')) || [];
-            tarefas.push({ texto, concluida });
-            localStorage.setItem('tarefas', JSON.stringify(tarefas));
-        }
-
-        // Atualizar tarefa no localStorage
-        function atualizarTarefa(index, concluida) {
-            const tarefas = JSON.parse(localStorage.getItem('tarefas')) || [];
-            if (tarefas[index]) {
-                tarefas[index].concluida = concluida;
-                localStorage.setItem('tarefas', JSON.stringify(tarefas));
-            }
-        }
-
-        // Remover tarefa no localStorage
-        function removerTarefa(index) {
-            const tarefas = JSON.parse(localStorage.getItem('tarefas')) || [];
-            tarefas.splice(index, 1);
-            localStorage.setItem('tarefas', JSON.stringify(tarefas));
-        }
-
-        // Alterar tema
-        function mudarTema(tema) {
-            document.body.className = `tema-${tema}`;
-            localStorage.setItem('temaSelecionado', tema);
-        }
-
-        // Carregar tema ao iniciar
-        window.onload = function () {
-            const temaSalvo = localStorage.getItem('temaSelecionado') || 'claro';
-            mudarTema(temaSalvo);
-            carregarTarefas();
-        };
-    </script>
+    <script src="app.js"></script>
+    <script src="tarefas.js"></script>
 </body>
+
 </html>
